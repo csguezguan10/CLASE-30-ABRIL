@@ -81,9 +81,6 @@ Figura 2. Conjunto husillo y tuerca trapezoidal
 ![Husillo de bolas](https://www.directindustry.es/prod/thomson-industries-inc/product-7040-2252635.html)
 Figura 3. Husillo de bolas con tuerca
 
-![Wikipedia](https://es.wikipedia.org/wiki/Husillo_de_bolas)
-Figura 4. Diagrama interno de husillo de bolas
-
 ## 5. Tablas
 
 | Tipo de tornillo | Eficiencia | Características clave                  |
