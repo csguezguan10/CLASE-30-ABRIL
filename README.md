@@ -14,7 +14,7 @@ La transmisión por tornillo guía es un método ampliamente utilizado para conv
 
 ## 2. Subsecciones
 
-# 2.1 Tipos de tornillos de transmisión
+## 2.1 Tipos de tornillos de transmisión
 
 * **Tornillos ACME o trapezoidales**
     * Usan una forma de rosca trapezoidal.
@@ -26,7 +26,7 @@ La transmisión por tornillo guía es un método ampliamente utilizado para conv
     * Eficiencia muy alta (85% a 95%).
     * Más precisos y costosos.
 
-# 2.2 Torque de carga con y sin fricción
+## 2.2 Torque de carga con y sin fricción
 
 Para mover una carga lineal con un tornillo, el motor debe aplicar un torque. Ese torque depende de:
 
@@ -35,19 +35,19 @@ Para mover una carga lineal con un tornillo, el motor debe aplicar un torque. Es
 * El diámetro medio del tornillo $d_m$
 * La fricción del sistema $\mu$
 
-# 2.3 Inercia reflejada por masa lineal
+## 2.3 Inercia reflejada por masa lineal
 
 Cuando mueves una masa lineal (una mesa, un eje, etc.), esa masa opone resistencia a los cambios de velocidad. En un tornillo, esa resistencia se traduce al eje del motor como si fuera una inercia rotacional. Esto se llama inercia reflejada.
 
 ## 3. Ecuaciones
 
-# 1. Relación entre giro y desplazamiento lineal:
+## 1. Relación entre giro y desplazamiento lineal:
 
 $$ \frac{d\theta}{dx} = \frac{2\pi}{p} $$
 
 Esto significa que por cada **desplazamiento lineal** $dx$, el tornillo debe girar una cierta cantidad $d\theta$. Depende del **paso** $p$ del tornillo.
 
-# 2. Torque con fricción:
+## 2. Torque con fricción:
 
 $$ T = \frac{F \cdot d_m}{2} \cdot \left( \frac{p + \pi \mu d_m}{\pi d_m - \mu p} \right) $$
 
@@ -63,7 +63,7 @@ Si no hay fricción ($\mu = 0$), se simplifica a:
 
 $$ T = \frac{F \cdot p}{2\pi} $$
 
-# 3. Inercia reflejada:
+## 3. Inercia reflejada:
 
 $$ J_{ref} = m \cdot \left( \frac{p}{2\pi} \right)^2 $$
 
