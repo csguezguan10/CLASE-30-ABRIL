@@ -4,19 +4,7 @@
 
 La transmisión por tornillo guía es un método ampliamente utilizado para convertir movimiento rotacional en movimiento lineal. Es fundamental en aplicaciones de control de movimiento, como en sistemas CNC, actuadores lineales y máquinas herramienta. Esta clase explora los principios, ecuaciones, eficiencia, cálculos prácticos y simulaciones relacionadas con los tornillos trapezoidales y de bolas, ofreciendo herramientas para comprender y aplicar correctamente estos sistemas en diseños mecánicos.
 
-## 1. Subtítulos
-
-1.1 Tipos de tornillos de transmisión  
-1.2 Conceptos geométricos  
-1.3 Relación de transmisión  
-1.4 Torque de carga  
-1.5 Inercia reflejada  
-1.6 Eficiencia del tornillo  
-1.7 Ejemplo práctico  
-1.8 Simulación Simscape  
-1.9 Figuras y referencias visuales  
-
-## 2. Definiciones
+## 1. Definiciones
 
 >🔑 *Tornillo guía:* Mecanismo que convierte movimiento rotacional en movimiento lineal, común en sistemas de posicionamiento.  
 >🔑 *Rosca trapezoidal:* Tipo de rosca con flancos en ángulo de 30°, utilizada en mecanismos de transmisión por su robustez.  
@@ -24,29 +12,65 @@ La transmisión por tornillo guía es un método ampliamente utilizado para conv
 >🔑 *Inercia reflejada:* Equivalente rotacional de una masa lineal vista desde el eje del motor.  
 >🔑 *Eficiencia:* Relación entre la energía útil obtenida y la energía suministrada.  
 
-## 3. Subsecciones
+## 2. Subsecciones
 
-### 3.1. Tipos de tornillos de transmisión
-- Tornillos ACME o trapezoidales  
-- Tornillos de bolas  
+# 2.1 Tipos de tornillos de transmisión
 
-### 3.2. Torque de carga con y sin fricción
-Se explica el impacto de la fricción en el torque requerido para mover una carga axial.  
+* **Tornillos ACME o trapezoidales**
+    * Usan una forma de rosca trapezoidal.
+    * Son comunes, económicos, pero tienen más fricción.
+    * Eficiencia entre 35% y 85%.
 
-### 3.3. Inercia reflejada por masa lineal
-Permite calcular cuánta resistencia al cambio de velocidad lineal se traduce como carga rotacional.   
+* **Tornillos de bolas**
+    * Usan bolas entre el tornillo y la tuerca → baja fricción.
+    * Eficiencia muy alta (85% a 95%).
+    * Más precisos y costosos.
 
-## 4. Ecuaciones
+# 2.2 Torque de carga con y sin fricción
 
-$$\\frac{d\\theta}{dx} = \\frac{2\\pi}{p}$$
+Para mover una carga lineal con un tornillo, el motor debe aplicar un torque. Ese torque depende de:
 
-$$T = \\frac{F \\cdot d_m}{2} \\cdot \\left( \\frac{p + \\pi \\mu d_m}{\\pi d_m - \\mu p} \\right)$$
+* La carga axial $F$
+* El paso del tornillo $p$
+* El diámetro medio del tornillo $d_m$
+* La fricción del sistema $\mu$
 
-$$J_{\\text{ref}} = m \\cdot \\left( \\frac{p}{2\\pi} \\right)^2$$
+# 2.3 Inercia reflejada por masa lineal
 
-$$\\eta \\approx \\frac{1 - \\mu \\cdot \\tan(\\phi)}{1 + \\mu / \\tan(\\phi)}$$
+Cuando mueves una masa lineal (una mesa, un eje, etc.), esa masa opone resistencia a los cambios de velocidad. En un tornillo, esa resistencia se traduce al eje del motor como si fuera una inercia rotacional. Esto se llama inercia reflejada.
 
-## 5. Figuras
+## 3. Ecuaciones
+
+# 1. Relación entre giro y desplazamiento lineal:
+
+$$ \frac{d\theta}{dx} = \frac{2\pi}{p} $$
+
+Esto significa que por cada **desplazamiento lineal** $dx$, el tornillo debe girar una cierta cantidad $d\theta$. Depende del **paso** $p$ del tornillo.
+
+# 2. Torque con fricción:
+
+$$ T = \frac{F \cdot d_m}{2} \cdot \left( \frac{p + \pi \mu d_m}{\pi d_m - \mu p} \right) $$
+
+**Desglose:**
+* $F$: fuerza que empuja la carga axialmente.
+* $d_m$: diámetro medio del tornillo.
+* $\mu$: coeficiente de fricción.
+* $p$: paso del tornillo.
+
+Esta fórmula da el **torque total requerido** para vencer la fricción y levantar la carga.
+
+Si no hay fricción ($\mu = 0$), se simplifica a:
+
+$$ T = \frac{F \cdot p}{2\pi} $$
+
+# 3. Inercia reflejada:
+
+$$ J_{ref} = m \cdot \left( \frac{p}{2\pi} \right)^2 $$
+
+
+
+
+## 4. Figuras
 
 ![Tornillo Trapezoidal](https://rollcnc.com/product/tornillo-trapezoidal-t102-1000mm/)
 Figura 1. Tornillo trapezoidal T10x2
@@ -60,7 +84,7 @@ Figura 3. Husillo de bolas con tuerca
 ![Wikipedia](https://es.wikipedia.org/wiki/Husillo_de_bolas)
 Figura 4. Diagrama interno de husillo de bolas
 
-## 6. Tablas
+## 5. Tablas
 
 | Tipo de tornillo | Eficiencia | Características clave                  |
 |------------------|------------|----------------------------------------|
@@ -69,7 +93,7 @@ Figura 4. Diagrama interno de husillo de bolas
 
 Tabla 1. Comparación entre tipos de tornillos
 
-## 7. Código
+## 6. Código
 
 **Ejemplo:** Cálculo básico en MATLAB
 ```matlab
@@ -80,7 +104,7 @@ disp(['Torque ideal: ', num2str(T), ' Nm']);
 ```
 **Ejemplo:** Simulacion en MATLAB de simulink multibody 
 
-## 8. Ejercicios
+## 7. Ejercicios
 
 ### Ejercicio 1
 
@@ -191,15 +215,14 @@ Si se considera una eficiencia del sistema de, digamos, 85%:
 
 $P_{\text{real}} = \frac{117.6}{0.85} \approx 138.3 \text{ W}$
 
-## 9. Conclusiones
+## 8. Conclusiones
 
 El diseño eficaz de sistemas mecánicos para el control de movimiento es un proceso multifacético que va más allá de la simple aplicación de fórmulas. Es crucial no solo calcular con precisión el torque y la potencia necesarios para superar cargas, fricción y aceleración (como se ilustra en los ejemplos de cálculo de tornillos y bandas transportadoras), sino también seleccionar cuidadosamente el motor y el mecanismo de transmisión adecuados. Esto implica asegurar que el motor tenga el torque suficiente y una inercia compatible con la carga, siempre considerando un margen de seguridad y factores prácticos como el costo y la precisión.
 
 Finalmente, la validación y el análisis de estos sistemas se ven enormemente beneficiados por el uso de herramientas de simulación. Estas herramientas permiten predecir el comportamiento de mecanismos complejos como las cremalleras y piñones, o las bandas transportadoras, y visualizar resultados clave, lo que facilita la optimización del diseño y la comprensión de conceptos fundamentales como la inercia reflejada, asegurando así la fiabilidad y eficiencia del sistema final.
 
-## 10. Referencias
+## 9. Referencias
 
 * Wikipedia: [https://es.wikipedia.org/wiki/Husillo_de_bolas](https://es.wikipedia.org/wiki/Husillo_de_bolas)
 * Catálogo Thomson: [https://www.thomsonlinear.com/es/productos/husillos-de-bolas](https://www.thomsonlinear.com/es/productos/husillos-de-bolas)
 * Manual SKF (Slideshare): [https://es.slideshare.net/slideshow/manual-husillos-de-bolas-skfpdf/254006675](https://es.slideshare.net/slideshow/manual-husillos-de-bolas-skfpdf/254006675)
-* Imágenes obtenidas de: RollCNC, GrupoGaes, DirectIndustry, Wikipedia
