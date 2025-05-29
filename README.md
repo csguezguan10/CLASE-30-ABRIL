@@ -268,7 +268,7 @@ $P_{\text{real}} = \frac{117.6}{0.85} \approx 138.3 \text{ W}$
 
 ### Ejercicio 5 simulacion
 
-La imagen presenta un diagrama de bloques de un modelo en Simscape Multibody, un entorno de MATLAB/Simulink utilizado para simular sistemas mecánicos. En el contexto de un ejercicio sobre un tornillo de transmisión (husillo), este modelo representaría la interacción entre un motor y una carga lineal mediante dicho mecanismo.
+Presenta un diagrama de bloques de un modelo en Simscape Multibody, un entorno de MATLAB/Simulink utilizado para simular sistemas mecánicos. En el contexto de un ejercicio sobre un tornillo de transmisión (husillo), este modelo representaría la interacción entre un motor y una carga lineal mediante dicho mecanismo.
 
 Los componentes clave del modelo son:
 * Solver Configuration: Establece los parámetros de solución numérica para las ecuaciones del sistema físico, esenciales para que el modelo del tornillo y la carga se comporten dinámicamente de forma realista.
