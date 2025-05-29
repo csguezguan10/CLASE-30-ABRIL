@@ -1,5 +1,9 @@
 # CLASE-30-ABRIL
 
+## Integrantes 
+Carlos Stiven Guezguan         Codigo 96039                           
+Juan Jose Martinez             Codigo 105353
+
 # Clase: Transmisión por Tornillo Guía
 
 La transmisión por tornillo guía es un método ampliamente utilizado para convertir movimiento rotacional en movimiento lineal. Es fundamental en aplicaciones de control de movimiento, como en sistemas CNC, actuadores lineales y máquinas herramienta. Esta clase explora los principios, ecuaciones, eficiencia, cálculos prácticos y simulaciones relacionadas con los tornillos trapezoidales y de bolas, ofreciendo herramientas para comprender y aplicar correctamente estos sistemas en diseños mecánicos.
@@ -106,8 +110,6 @@ p = 0.008;
 T = F * p / (2*pi);
 disp(['Torque ideal: ', num2str(T), ' Nm']);
 ```
-### Sistema Piñón-Cremallera**
-
 # Sistema Piñón-Cremallera
 
 Este mecanismo se caracteriza por su capacidad de realizar una **conversión directa y robusta de movimiento rotacional a lineal, y viceversa.** Se compone de dos elementos principales:
@@ -287,7 +289,7 @@ La simulación arrojó resultados satisfactorios
 
 ![Imagen 7](Imagen/imagen7.png)
 
-video simulacion : [(https://youtu.be/zCQIpPYMi94)]
+video simulacion :https://youtu.be/zCQIpPYMi94
 ## Conclusiones
 
 El diseño eficaz de sistemas mecánicos para el control de movimiento es un proceso multifacético que va más allá de la simple aplicación de fórmulas. Es crucial no solo calcular con precisión el torque y la potencia necesarios para superar cargas, fricción y aceleración (como se ilustra en los ejemplos de cálculo de tornillos piñon cremallera y bandas transportadoras), sino también seleccionar cuidadosamente el motor y el mecanismo de transmisión adecuados. Esto implica asegurar que el motor tenga el torque suficiente y una inercia compatible con la carga, siempre considerando un margen de seguridad y factores prácticos como el costo y la precisión.
