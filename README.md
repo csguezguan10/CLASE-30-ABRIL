@@ -106,8 +106,51 @@ p = 0.008;
 T = F * p / (2*pi);
 disp(['Torque ideal: ', num2str(T), ' Nm']);
 ```
-**Ejemplo:** Simulacion en MATLAB de simulink multibody 
+### Sistema Piñón-Cremallera**
 
+# Sistema Piñón-Cremallera
+
+Este mecanismo se caracteriza por su capacidad de realizar una **conversión directa y robusta de movimiento rotacional a lineal, y viceversa.** Se compone de dos elementos principales:
+
+* **Piñón:** Es un engranaje con forma circular que se acopla directamente al eje de un motor (o a un tren de engranajes previo). Su rotación es el origen del movimiento en el sistema.
+* **Cremallera:** Es una barra recta que posee una serie de dientes cortados a lo largo de uno de sus bordes, diseñados para engranar perfectamente con los dientes del piñón. A medida que el piñón gira, los dientes del piñón empujan los dientes de la cremallera, causando su movimiento lineal.
+
+## Relación de Transmisión:
+
+La velocidad lineal de la cremallera ($V_{rack}$) está directamente relacionada con la velocidad angular del piñón ($\omega_{piñón}$) y el radio efectivo del piñón ($r_{piñón}$) en el punto de contacto con la cremallera. La fórmula que describe esta relación es:
+
+$V_{rack} = r_{piñón} \cdot \omega_{piñón}$
+
+Adicionalmente, la relación de transmisión ($N$) de todo el sistema (desde el motor hasta la carga lineal) se define como el cociente entre la velocidad del motor y la velocidad de la carga:
+
+$$
+N = \frac{Velocidad_{motor}}{Velocidad_{carga}}
+$$
+
+Es importante destacar que, en términos de inercia reflejada (cómo la masa lineal se percibe en el lado rotacional del motor) y el cálculo del torque de carga (el torque necesario para mover la masa lineal), el comportamiento de un sistema piñón-cremallera es conceptualmente similar al de un tornillo guía. Ambos mecanismos requieren consideraciones análogas para el diseño y control del motor.
+
+# Banda Transportadora Plana
+
+La banda transportadora es un mecanismo excepcionalmente versátil y ampliamente empleado para generar movimiento lineal continuo a partir de una fuente de potencia rotacional, comúnmente un motor eléctrico. Su simplicidad y eficiencia la hacen indispensable en una gran variedad de industrias. Su configuración más fundamental incluye:
+
+* **Banda:** Una cinta flexible y robusta, usualmente hecha de materiales compuestos, que forma un lazo cerrado y se mueve linealmente.
+* **Poleas:** Generalmente dos (aunque pueden ser más), alrededor de las cuales se enrolla la banda. Una de estas poleas actúa como polea motriz (impulsada por el motor), mientras que la otra suele ser una polea tensora o de retorno. En la configuración simple, se asume que tienen radios iguales.
+
+## Relación de Transmisión de la Banda Transportadora:
+
+La velocidad lineal de la banda ($V_{belt}$) está directamente relacionada con la velocidad angular de la polea motriz ($\omega_{ip}$) y su radio ($r_{ip}$):
+
+$V_{belt} = r_{ip} \cdot \omega_{ip}$
+
+Similar a otros sistemas de transmisión, la relación de transmisión ($N$) que relaciona la velocidad de giro del motor con la velocidad lineal de la banda (la carga) es:
+
+$$
+N = \frac{Velocidad_{motor}}{Velocidad_{carga}}
+$$
+
+## Consideraciones Dinámicas:
+
+Para el diseño de sistemas de bandas transportadoras, la determinación de la inercia reflejada (que incluiría la masa de la banda misma y cualquier carga que se encuentre sobre ella, reflejada al eje del motor) y el torque de carga necesario para superar la fricción, la gravedad y acelerar la masa, se maneja de manera conceptualmente análoga a la de los tornillos guía. Esto implica calcular la inercia rotacional equivalente de los componentes lineales y la fuerza necesaria para moverlos.
 ### Ejercicio 1
 
 **Enunciado:** Determinar el torque necesario para levantar una carga de 1000 N con un tornillo de paso 4 mm, fricción 0.1 y diámetro medio 16 mm.
@@ -221,7 +264,7 @@ Si se considera una eficiencia del sistema de, digamos, 85%:
 
 $P_{\text{real}} = \frac{117.6}{0.85} \approx 138.3 \text{ W}$
 
-### Ejercicio 3 simulacion
+### Ejercicio 5 simulacion
 
 La imagen presenta un diagrama de bloques de un modelo en Simscape Multibody, un entorno de MATLAB/Simulink utilizado para simular sistemas mecánicos. En el contexto de un ejercicio sobre un tornillo de transmisión (husillo), este modelo representaría la interacción entre un motor y una carga lineal mediante dicho mecanismo.
 
@@ -238,10 +281,16 @@ Los componentes clave del modelo son:
 
 En el contexto de un tornillo, este modelo permite simular cómo el torque aplicado al motor (que se ve afectado por la carga axial $F$, el paso del tornillo $p$, el diámetro medio $d_m$ y la fricción $\mu$) se traduce en el desplazamiento lineal de la carga. También se podría analizar la inercia reflejada ($J_{ref}$) de la masa lineal al eje del motor, calculada como $J_{ref} = m \cdot \left(\frac{p}{2\pi}\right)^2$, que el motor debe superar para mover la carga. El modelo puede usarse para comparar el rendimiento de tornillos ACME frente a tornillos de bolas, considerando sus diferencias en fricción y eficiencia.
 
+![Imagen 5](Imagen/imagen5.png)
 
+La simulación arrojó resultados satisfactorios
+
+![Imagen 7](Imagen/imagen7.png)
+
+video simulacion : [(https://youtu.be/zCQIpPYMi94)]
 ## Conclusiones
 
-El diseño eficaz de sistemas mecánicos para el control de movimiento es un proceso multifacético que va más allá de la simple aplicación de fórmulas. Es crucial no solo calcular con precisión el torque y la potencia necesarios para superar cargas, fricción y aceleración (como se ilustra en los ejemplos de cálculo de tornillos y bandas transportadoras), sino también seleccionar cuidadosamente el motor y el mecanismo de transmisión adecuados. Esto implica asegurar que el motor tenga el torque suficiente y una inercia compatible con la carga, siempre considerando un margen de seguridad y factores prácticos como el costo y la precisión.
+El diseño eficaz de sistemas mecánicos para el control de movimiento es un proceso multifacético que va más allá de la simple aplicación de fórmulas. Es crucial no solo calcular con precisión el torque y la potencia necesarios para superar cargas, fricción y aceleración (como se ilustra en los ejemplos de cálculo de tornillos piñon cremallera y bandas transportadoras), sino también seleccionar cuidadosamente el motor y el mecanismo de transmisión adecuados. Esto implica asegurar que el motor tenga el torque suficiente y una inercia compatible con la carga, siempre considerando un margen de seguridad y factores prácticos como el costo y la precisión.
 
 Finalmente, la validación y el análisis de estos sistemas se ven enormemente beneficiados por el uso de herramientas de simulación. Estas herramientas permiten predecir el comportamiento de mecanismos complejos como las cremalleras y piñones, o las bandas transportadoras, y visualizar resultados clave, lo que facilita la optimización del diseño y la comprensión de conceptos fundamentales como la inercia reflejada, asegurando así la fiabilidad y eficiencia del sistema final.
 
